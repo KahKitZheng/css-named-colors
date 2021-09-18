@@ -1,0 +1,33 @@
+.hero {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100vh;
+  width: 100vw;
+  user-select: none;
+
+  &__name {
+    font-size: 2rem;
+    font-weight: 900;
+    margin: 0;
+  }
+
+  &__values {
+    display: flex;
+    align-items: center;
+    margin-top: 0.75rem;
+    font-size: 18px;
+
+    .bullet {
+      margin: 0 0.75rem;
+      opacity: 0.3;
+    }
+  }
+}
+
+@media (min-width: 768px) {
+  .hero__name {
+    font-size: 3.5rem;
+  }
+}
