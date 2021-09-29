@@ -34,7 +34,7 @@ const ColorValues = styled.div`
 `;
 
 const Bullet = styled.span`
-  margin: 0 0.75rem;
+  margin: 0 0.5rem;
   opacity: 0.3;
 `;
 
