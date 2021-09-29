@@ -9,6 +9,7 @@ const StyledColorBlock = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
+  height: 11rem;
   background-color: ${(props) => props.bgColor};
   color: ${(props) => replaceColor(props.textColor)};
 
