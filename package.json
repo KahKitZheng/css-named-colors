@@ -1,5 +1,5 @@
 {
-  "name": "css-color-guesser",
+  "name": "css-named-colors",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
