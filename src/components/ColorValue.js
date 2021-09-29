@@ -16,14 +16,10 @@ const Button = styled.button`
   }
 `;
 
-const ColorValue = ({ color, small }) => {
-  const [isCopied, setIsCopied] = useState(false);
-
-  return (
-    <CopyToClipboard text={color} onCopy={() => setIsCopied(true)}>
-      <Button isSmall={small}>{color}</Button>
-    </CopyToClipboard>
-  );
-};
+const ColorValue = ({ color, small }) => (
+  <CopyToClipboard text={color}>
+    <Button isSmall={small}>{color}</Button>
+  </CopyToClipboard>
+);
 
 export default ColorValue;
