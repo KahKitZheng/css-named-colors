@@ -1,46 +1,23 @@
 import React from "react";
+import styled from "styled-components";
 import data from "../data.json";
-import ColorValue from "./ColorValue";
-import { replaceColor } from "../utils";
-import { ToastContainer, toast } from "react-toastify";
+import ColorBlock from "./ColorBlock";
 import "react-toastify/dist/ReactToastify.css";
+import { ToastContainer } from "react-toastify";
+
+const ColorGrid = styled.div`
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(11rem, 1fr));
+`;
 
 const ColorList = () => {
-  const notify = (color) => {
-    toast(`${color} is copied! 👍`, {
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 3000,
-      draggable: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      progress: undefined,
-      hideProgressBar: true,
-    });
-  };
-
   return (
-    <div className="grid-colors">
-      {data.map((color, index) => (
-        <div
-          key={color.name + index}
-          className="block"
-          style={{
-            backgroundColor: color.hex,
-            color: replaceColor(color.rgb),
-          }}
-        >
-          <p className="block__name">{color.name}</p>
-          <div onClick={() => notify(color.hex)}>
-            <ColorValue color={color.hex} small={true} />
-          </div>
-          <div onClick={() => notify(`rgb(${color.rgb})`)}>
-            <ColorValue color={`rgb(${color.rgb})`} small={true} />
-          </div>
-        </div>
+    <ColorGrid>
+      {data.map((color) => (
+        <ColorBlock key={color.name} color={color} />
       ))}
       <ToastContainer />
-    </div>
+    </ColorGrid>
   );
 };
 
