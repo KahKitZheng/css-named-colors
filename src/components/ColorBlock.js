@@ -30,7 +30,7 @@ const StyledColorBlock = styled.div`
 `;
 
 const ColorBlock = ({ color }) => {
-  const { name, hex, rgb } = color;
+  const { name, hex, rgb, hsl } = color;
 
   const notify = (color) => {
     toast(`${color} copied! 👍`, {
@@ -53,6 +53,9 @@ const ColorBlock = ({ color }) => {
       </div>
       <div onClick={() => notify(`rgb(${rgb})`)}>
         <ColorValue color={`rgb(${rgb})`} small={true} />
+      </div>
+      <div onClick={() => notify(`hsl(${hsl})`)}>
+        <ColorValue color={`hsl(${hsl})`} small={true} />
       </div>
     </StyledColorBlock>
   );
