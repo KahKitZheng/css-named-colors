@@ -1,12 +1,10 @@
 import Hero from "./Hero";
-import ColorList from "./ColorList";
-import Footer from "./Footer";
+import Colors from "./Colors";
 
 const App = () => (
   <>
     <Hero />
-    <ColorList />
-    <Footer />
+    <Colors />
   </>
 );
 

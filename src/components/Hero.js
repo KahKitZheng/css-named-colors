@@ -21,7 +21,7 @@ const StyledHero = styled.div`
 `;
 
 const ColorName = styled.h1`
-  font-size: 4rem;
+  font-size: 2rem;
   font-weight: 900;
   margin: 0;
 `;
@@ -29,8 +29,15 @@ const ColorName = styled.h1`
 const ColorValues = styled.div`
   display: flex;
   align-items: center;
-  margin-top: 0.75rem;
-  font-size: 18px;
+  justify-content: center;
+  flex-direction: column;
+  margin-top: 2rem;
+  /* font-size: 12px; */
+
+  @media (min-width: 768px) {
+    flex-direction: row;
+    margin-top: 0.75rem;
+  }
 `;
 
 const Bullet = styled.span`
@@ -42,7 +49,7 @@ const Hero = () => {
   const [idx, setIndex] = useState(null);
 
   const notify = (color) =>
-    toast(`${color} is copied! 👍`, {
+    toast(`Copied ${color}! 👍`, {
       theme: "dark",
       position: "bottom-right",
       autoClose: 3000,
@@ -76,6 +83,10 @@ const Hero = () => {
           <Bullet>&#8226;</Bullet>
           <div onClick={() => notify(`rgb(${data[idx].rgb})`)}>
             <ColorValue color={`rgb(${data[idx].rgb})`} />
+          </div>
+          <Bullet>&#8226;</Bullet>
+          <div onClick={() => notify(`hsl(${data[idx].hsl})`)}>
+            <ColorValue color={`hsl(${data[idx].hsl})`} />
           </div>
         </ColorValues>
 
