@@ -1,6 +1,6 @@
 import React from "react";
 import styled, { keyframes } from "styled-components";
-import { replaceColor } from "../utils";
+import { calcTextColor } from "../utils";
 
 const ScrollAnimation = keyframes`
   0% {
@@ -60,7 +60,7 @@ const Wheel = styled.div`
 
 // Edited version of https://codepen.io/rightblog/pen/EagNMN/ by Yurij Rightblog.ru
 const ScrollDown = ({ color }) => (
-  <MouseScroll style={{ color: replaceColor(color) }}>
+  <MouseScroll style={{ color: calcTextColor(color) }}>
     <Mouse>
       <Wheel />
     </Mouse>

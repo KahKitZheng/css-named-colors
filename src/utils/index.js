@@ -1,9 +1,9 @@
 /**
- * Calculate the text color based on the background color.
+ * Determine whether text color should be black or white depending on the bgColor.
  * @param {string} bgColor
  * @returns either "black" or "white"
  */
-export const replaceColor = (bgColor) => {
+export const calcTextColor = (bgColor) => {
   let rgb = bgColor.split(",");
 
   let red = rgb[0];

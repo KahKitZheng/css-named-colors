@@ -3,7 +3,7 @@ import styled from "styled-components";
 import data from "../data.json";
 import ColorValue from "./ColorValue";
 import ScrollDown from "./ScrollDown";
-import { replaceColor } from "../utils";
+import { calcTextColor } from "../utils";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
@@ -73,7 +73,7 @@ const Hero = () => {
     idx && (
       <StyledHero
         bgColor={data[idx].hex}
-        textColor={replaceColor(data[idx].rgb)}
+        textColor={calcTextColor(data[idx].rgb)}
       >
         <ColorName>{data[idx].name}</ColorName>
         <ColorValues>
