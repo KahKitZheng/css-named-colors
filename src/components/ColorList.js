@@ -22,6 +22,10 @@ const StyledList = styled.div`
       display: block;
     }
   }
+
+  @media (min-width: 2560px) {
+    margin: 4rem auto 0;
+  }
 `;
 
 const ColorGroupName = styled.h3`
@@ -176,7 +180,7 @@ const ColorList = ({ colorGroup }) => {
   };
 
   return (
-    <StyledList>
+    <StyledList className="colorGroup">
       <ColorGroupName>{colorGroup} - CSS Named Colors</ColorGroupName>
       <ColorTable>
         <TableHead>

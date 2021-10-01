@@ -28,3 +28,30 @@ export const calcTextColor = (bgColor) => {
 
   return sum > 128 ? "black" : "white";
 };
+
+/**
+ * Create a masonry layout when the viewport is at least 2560px;
+ * @param {number} vw, width of the viewport
+ */
+export const createMasonry = (vw) => {
+  if (vw >= 2560) {
+    const containerEl = document.getElementById("colors");
+    const left = document.querySelectorAll(".colorGroup:nth-child(3n + 1)");
+    const middle = document.querySelectorAll(".colorGroup:nth-child(3n + 2)");
+    const right = document.querySelectorAll(".colorGroup:nth-child(3n + 3)");
+
+    const colorGroups = [left, middle, right];
+
+    colorGroups.forEach((colorGroup) => {
+      const column = document.createElement("div");
+      column.style.display = "flex";
+      column.style.flexDirection = "column";
+
+      for (let index = 0; index < colorGroup.length; index++) {
+        column.appendChild(colorGroup[index]);
+      }
+
+      containerEl.appendChild(column);
+    });
+  }
+};
