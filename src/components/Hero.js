@@ -13,7 +13,7 @@ const StyledHero = styled.div`
   justify-content: center;
   flex-direction: column;
   height: 100vh;
-  width: 100vw;
+  width: 100%;
   user-select: none;
 
   background-color: ${(props) => props.bgColor};
@@ -24,6 +24,10 @@ const ColorName = styled.h1`
   font-size: 2rem;
   font-weight: 900;
   margin: 0;
+
+  @media (min-width: 1440px) {
+    font-size: 3.5rem;
+  }
 `;
 
 const ColorValues = styled.div`
@@ -32,17 +36,28 @@ const ColorValues = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 2rem;
-  /* font-size: 12px; */
 
   @media (min-width: 768px) {
     flex-direction: row;
     margin-top: 0.75rem;
+  }
+
+  @media (min-width: 1440px) {
+    font-size: 1.5rem;
+
+    button {
+      font-size: 1.25rem;
+    }
   }
 `;
 
 const Bullet = styled.span`
   margin: 0 0.5rem;
   opacity: 0.3;
+
+  @media (min-width: 1440px) {
+    margin: 0 1rem;
+  }
 `;
 
 const Hero = () => {
