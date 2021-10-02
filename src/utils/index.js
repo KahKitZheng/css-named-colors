@@ -33,25 +33,46 @@ export const calcTextColor = (bgColor) => {
  * Create a masonry layout when the viewport is at least 2560px;
  * @param {number} vw, width of the viewport
  */
-export const createMasonry = (vw) => {
-  if (vw >= 2560) {
-    const containerEl = document.getElementById("colors");
-    const left = document.querySelectorAll(".colorGroup:nth-child(3n + 1)");
-    const middle = document.querySelectorAll(".colorGroup:nth-child(3n + 2)");
-    const right = document.querySelectorAll(".colorGroup:nth-child(3n + 3)");
+export const createMasonry = (col) => {
+  const containerEl = document.getElementById("colors");
+  const red = document.getElementById("red");
+  const pink = document.getElementById("pink");
+  const orange = document.getElementById("orange");
+  const yellow = document.getElementById("yellow");
+  const purple = document.getElementById("purple");
+  const green = document.getElementById("green");
+  const blue = document.getElementById("blue");
+  const brown = document.getElementById("brown");
+  const white = document.getElementById("white");
+  const gray = document.getElementById("gray");
+  let colorGroups = [];
 
-    const colorGroups = [left, middle, right];
-
-    colorGroups.forEach((colorGroup) => {
-      const column = document.createElement("div");
-      column.style.display = "flex";
-      column.style.flexDirection = "column";
-
-      for (let index = 0; index < colorGroup.length; index++) {
-        column.appendChild(colorGroup[index]);
-      }
-
-      containerEl.appendChild(column);
-    });
+  if (col === 2) {
+    colorGroups = [
+      [red, orange, purple, blue, white],
+      [pink, yellow, green, brown, gray],
+    ];
   }
+
+  if (col === 3) {
+    colorGroups = [
+      [red, yellow, blue, gray],
+      [pink, purple, brown],
+      [orange, green, white],
+    ];
+  }
+
+  containerEl.innerHTML = "";
+
+  colorGroups.forEach((colorGroup) => {
+    const column = document.createElement("div");
+    column.style.display = "flex";
+    column.style.flexDirection = "column";
+
+    for (let index = 0; index < colorGroup.length; index++) {
+      column.appendChild(colorGroup[index]);
+    }
+
+    containerEl.appendChild(column);
+  });
 };

@@ -6,11 +6,14 @@ import { ToastContainer } from "react-toastify";
 import { createMasonry } from "../utils";
 
 const Container = styled.div`
-  @media (min-width: 2560px) {
+  @media (min-width: 1500px) {
     display: flex;
     justify-content: center;
+    gap: 2rem;
+  }
 
-    > :nth-child(odd) {
+  @media (min-width: 2300px) {
+    :nth-child(odd) {
       margin: 0 4rem;
     }
   }
@@ -18,23 +21,33 @@ const Container = styled.div`
 
 const Colors = () => {
   useEffect(() => {
-    let vw = window.innerWidth;
-    window.addEventListener("resize", createMasonry(vw));
+    function checkViewport() {
+      let vw = window.innerWidth;
+
+      if (vw > 1440 && vw < 2300) {
+        createMasonry(2);
+      } else if (vw > 2300) {
+        createMasonry(3);
+      }
+    }
+
+    checkViewport();
+    window.addEventListener("resize", checkViewport);
   });
 
   return (
     <div>
       <Container id="colors">
-        <ColorList colorGroup="red" />
-        <ColorList colorGroup="pink" />
-        <ColorList colorGroup="orange" />
-        <ColorList colorGroup="yellow" />
-        <ColorList colorGroup="purple" />
-        <ColorList colorGroup="green" />
-        <ColorList colorGroup="blue" />
-        <ColorList colorGroup="brown" />
-        <ColorList colorGroup="white" />
-        <ColorList colorGroup="gray" />
+        <ColorList id="red" colorGroup="red" />
+        <ColorList id="pink" colorGroup="pink" />
+        <ColorList id="orange" colorGroup="orange" />
+        <ColorList id="yellow" colorGroup="yellow" />
+        <ColorList id="purple" colorGroup="purple" />
+        <ColorList id="green" colorGroup="green" />
+        <ColorList id="blue" colorGroup="blue" />
+        <ColorList id="brown" colorGroup="brown" />
+        <ColorList id="white" colorGroup="white" />
+        <ColorList id="gray" colorGroup="gray" />
       </Container>
 
       <ToastContainer />

@@ -5,9 +5,13 @@ import ColorValue from "./ColorValue";
 import { toast } from "react-toastify";
 
 const StyledList = styled.div`
-  margin: 4rem auto;
+  margin: 0 auto 4rem;
   border-radius: 8px;
   max-width: 768px;
+
+  :first-child {
+    margin-top: 4rem;
+  }
 
   @media (max-width: 768px) {
     margin: 2rem 1rem;
@@ -23,8 +27,8 @@ const StyledList = styled.div`
     }
   }
 
-  @media (min-width: 2560px) {
-    margin: 4rem auto 0;
+  @media (min-width: 1500px) {
+    margin: 0 auto 2rem;
   }
 `;
 
@@ -163,7 +167,7 @@ const ColorHSL = styled.td`
   }
 `;
 
-const ColorList = ({ colorGroup }) => {
+const ColorList = ({ id, colorGroup }) => {
   const list = colors.filter((color) => color.group === colorGroup);
 
   const notify = (color) => {
@@ -180,7 +184,7 @@ const ColorList = ({ colorGroup }) => {
   };
 
   return (
-    <StyledList className="colorGroup">
+    <StyledList id={id} className="colorGroup">
       <ColorGroupName>{colorGroup} - CSS Named Colors</ColorGroupName>
       <ColorTable>
         <TableHead>
