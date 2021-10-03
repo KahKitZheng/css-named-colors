@@ -38,11 +38,12 @@ const ColorGroupName = styled.h3`
 `;
 
 const ColorTable = styled.table`
-  /* border-collapse: collapse; */
   border-radius: 8px;
   font-size: 14px;
   width: 100%;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.1), 0 2px 8px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 0 6px rgba(0, 0, 0, 0.1);
+  background-color: ${({ theme }) => theme.colors.tableBackground};
+  color: ${({ theme }) => theme.colors.textColor};
 `;
 
 /* Hide table headers (but not display: none;, for accessibility) */
@@ -63,38 +64,52 @@ const TableRow = styled.tr`
   }
 
   @media (max-width: 768px) {
-    border: 1px solid gainsboro;
+    border: ${({ theme }) => theme.colors.tableBorder};
 
     td {
       /* Behave like a "row" */
       border: none;
-      border-bottom: 1px solid #f4f4f4;
+      border-bottom: 1px solid transparent;
       position: relative;
-      padding: 11px 0 0 50%;
-      padding-top: 11px;
-      padding-left: 50%;
-      height: 2.75rem;
+      padding: 6px 0 6px 50%;
+      height: 2rem;
       width: 100%;
+      display: inline-flex;
+      align-items: center;
 
-      /* Now like a table header */
+      /* Make it look like a table header */
       :before {
         position: absolute;
-        top: 13px;
+        top: 6px;
         left: 13px;
         width: 45%;
         padding-right: 10px;
         white-space: nowrap;
+        font-weight: bold;
+      }
+
+      :first-child {
+        height: 2.75rem;
+        padding-top: 1rem;
+
+        :before {
+          top: 1rem;
+        }
+      }
+
+      :last-child {
+        height: 2.75rem;
+        padding-bottom: 1rem;
       }
     }
   }
 `;
 
 const TableHeader = styled.th`
-  color: black;
+  color: ${({ theme }) => theme.colors.theadText};
   font-size: 13px;
   text-align: left;
   text-transform: uppercase;
-  opacity: 0.3;
   padding: 1rem 0.5rem 0.5rem 1rem;
   height: 2rem;
 `;

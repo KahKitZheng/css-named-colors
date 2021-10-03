@@ -4,8 +4,13 @@ import styled from "styled-components";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { createMasonry } from "../utils";
+import Button from "./Button";
 
 const Container = styled.div`
+  position: relative;
+`;
+
+const StyledColors = styled.div`
   @media (min-width: 1500px) {
     display: flex;
     justify-content: center;
@@ -19,7 +24,7 @@ const Container = styled.div`
   }
 `;
 
-const Colors = () => {
+const Colors = ({ toggleTheme }) => {
   useEffect(() => {
     function checkViewport() {
       let vw = window.innerWidth;
@@ -36,8 +41,9 @@ const Colors = () => {
   });
 
   return (
-    <div>
-      <Container id="colors">
+    <Container>
+      <Button toggleTheme={toggleTheme} />
+      <StyledColors id="colors">
         <ColorList id="red" colorGroup="red" />
         <ColorList id="pink" colorGroup="pink" />
         <ColorList id="orange" colorGroup="orange" />
@@ -48,10 +54,10 @@ const Colors = () => {
         <ColorList id="brown" colorGroup="brown" />
         <ColorList id="white" colorGroup="white" />
         <ColorList id="gray" colorGroup="gray" />
-      </Container>
+      </StyledColors>
 
       <ToastContainer />
-    </div>
+    </Container>
   );
 };
 
