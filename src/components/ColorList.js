@@ -186,7 +186,7 @@ const ColorList = ({ id, colorGroup }) => {
   const list = colors.filter((color) => color.group === colorGroup);
 
   const notify = (color) => {
-    toast(`${color} copied! 👍`, {
+    toast(`Copied ${color}! 👍`, {
       theme: "dark",
       position: "bottom-right",
       autoClose: 4000,
