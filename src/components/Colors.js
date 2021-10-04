@@ -1,10 +1,10 @@
 import React, { useEffect } from "react";
-import ColorList from "./ColorList";
 import styled from "styled-components";
+import ColorList from "./ColorList";
+import ButtonTheme from "./ButtonTheme";
 import "react-toastify/dist/ReactToastify.css";
 import { ToastContainer } from "react-toastify";
 import { createMasonry } from "../utils";
-import Button from "./Button";
 
 const Container = styled.div`
   position: relative;
@@ -42,7 +42,7 @@ const Colors = ({ toggleTheme }) => {
 
   return (
     <Container>
-      <Button toggleTheme={toggleTheme} />
+      <ButtonTheme toggleTheme={toggleTheme} />
       <StyledColors id="colors">
         <ColorList id="red" colorGroup="red" />
         <ColorList id="pink" colorGroup="pink" />

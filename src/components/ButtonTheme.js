@@ -21,10 +21,8 @@ const slideOn = keyframes`
 `;
 
 const ToggleContainer = styled.div`
-  display: flex;
-  justify-content: center;
+  width: max-content;
   margin: 2rem auto 0;
-  user-select: none;
 `;
 
 const Toggle = styled.input`
@@ -44,14 +42,14 @@ const Label = styled.label`
   background-color: ${({ theme }) =>
     theme.colors.name === "dark" ? "#000" : "#fff"};
   color: ${({ theme }) => (theme.colors.name === "dark" ? "#fff" : "#000")};
-  border: 1px solid
+  border: 2px solid
     ${({ theme }) => (theme.colors.name === "dark" ? "#fff" : "#000")};
   border-radius: 50px;
   cursor: pointer;
   display: inline-block;
   margin: 0;
-  width: 62px;
-  height: 30px;
+  width: 64px;
+  height: 32px;
   transition: all 0.3s ease-out;
 `;
 
@@ -74,7 +72,6 @@ const Button = ({ toggleTheme, theme }) => {
   const [isChecked, setChecked] = useState(false);
 
   useEffect(() => {
-    console.log(theme.colors.name);
     theme.colors.name === "dark" ? setChecked(true) : setChecked(false);
   }, [theme.colors.name]);
 
