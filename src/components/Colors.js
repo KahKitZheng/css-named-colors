@@ -45,7 +45,7 @@ const Colors = ({ toggleTheme }) => {
   function delayColors() {
     setTimeout(() => {
       setDelayed(false);
-    }, 200);
+    }, 500);
 
     return <div></div>;
   }
