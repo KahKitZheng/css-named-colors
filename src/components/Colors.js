@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ColorList from "./ColorList";
 import ButtonTheme from "./ButtonTheme";
@@ -25,8 +25,6 @@ const StyledColors = styled.div`
 `;
 
 const Colors = ({ toggleTheme }) => {
-  const [isDelayed, setDelayed] = useState(true);
-
   useEffect(() => {
     function checkViewport() {
       let vw = window.innerWidth;
@@ -42,17 +40,7 @@ const Colors = ({ toggleTheme }) => {
     window.addEventListener("resize", checkViewport);
   });
 
-  function delayColors() {
-    setTimeout(() => {
-      setDelayed(false);
-    }, 500);
-
-    return <div></div>;
-  }
-
-  return isDelayed === true ? (
-    delayColors()
-  ) : (
+  return (
     <Container>
       <ButtonTheme toggleTheme={toggleTheme} />
       <StyledColors id="colors">
