@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
 import styled from "styled-components";
 import ColorList from "./ColorList";
 import ButtonTheme from "./ButtonTheme";
@@ -25,15 +25,6 @@ const StyledColors = styled.div`
 `;
 
 const Colors = ({ toggleTheme }) => {
-  const [isShown, setShown] = useState(false);
-
-  // Delay component render from flashing over the hero component
-  useEffect(() => {
-    setTimeout(() => {
-      setShown(true);
-    }, 1000);
-  }, []);
-
   useEffect(() => {
     function checkViewport() {
       let vw = window.innerWidth;
@@ -49,7 +40,7 @@ const Colors = ({ toggleTheme }) => {
     window.addEventListener("resize", checkViewport);
   });
 
-  return isShown ? (
+  return (
     <Container>
       <ButtonTheme toggleTheme={toggleTheme} />
       <StyledColors id="colors">
@@ -67,7 +58,7 @@ const Colors = ({ toggleTheme }) => {
 
       <ToastContainer />
     </Container>
-  ) : null;
+  );
 };
 
 export default Colors;

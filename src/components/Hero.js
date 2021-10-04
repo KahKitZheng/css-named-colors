@@ -14,7 +14,6 @@ const StyledHero = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100%;
-  user-select: none;
 
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.textColor};
