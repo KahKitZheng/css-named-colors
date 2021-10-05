@@ -1,8 +1,8 @@
 # CSS Named Colors
 
-## About
-Small project getting familiar with the CSS named colors as specified in CSS3 (CSS color Module Level 4).
+![Preview of the application](./preview.png)
 
 ## Built with
 - [Create React App](https://create-react-app.dev/)
-- [Sass](https://sass-lang.com/)
+- [Styled-Components](https://styled-components.com/)
+- [Vercel](https://vercel.com/)
