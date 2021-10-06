@@ -4,8 +4,6 @@ import data from "../data.json";
 import ColorValue from "./ColorValue";
 import ScrollDown from "./ScrollDown";
 import { calcTextColor } from "../utils";
-import { ToastContainer } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
 
 const StyledHero = styled.div`
   display: flex;
@@ -60,36 +58,29 @@ const Bullet = styled.span`
 `;
 
 const Hero = () => {
-  const [idx, setIndex] = useState(null);
-
-  function randomIndex(min, max) {
-    let idx = Math.floor(Math.random() * (max - min) + min);
-    return setIndex(idx);
-  }
+  const [idx, setIndex] = useState(0);
 
   useEffect(() => {
-    randomIndex(1, data.length);
+    let idx = Math.floor(Math.random() * data.length);
+    setIndex(idx);
   }, []);
 
   return (
-    idx && (
-      <StyledHero
-        bgColor={data[idx].hex}
-        textColor={calcTextColor(data[idx].rgb)}
-      >
-        <ColorName>{data[idx].name}</ColorName>
-        <ColorValues>
-          <ColorValue color={data[idx].hex} />
-          <Bullet>&#8226;</Bullet>
-          <ColorValue color={`rgb(${data[idx].rgb})`} />
-          <Bullet>&#8226;</Bullet>
-          <ColorValue color={`hsl(${data[idx].hsl})`} />
-        </ColorValues>
+    <StyledHero
+      bgColor={data[idx].hex}
+      textColor={calcTextColor(data[idx].rgb)}
+    >
+      <ColorName>{data[idx].name}</ColorName>
+      <ColorValues>
+        <ColorValue color={data[idx].hex} />
+        <Bullet>&#8226;</Bullet>
+        <ColorValue color={`rgb(${data[idx].rgb})`} />
+        <Bullet>&#8226;</Bullet>
+        <ColorValue color={`hsl(${data[idx].hsl})`} />
+      </ColorValues>
 
-        <ToastContainer />
-        <ScrollDown color={data[idx].rgb} />
-      </StyledHero>
-    )
+      <ScrollDown color={data[idx].rgb} />
+    </StyledHero>
   );
 };
 

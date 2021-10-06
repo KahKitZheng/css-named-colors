@@ -34,6 +34,7 @@ const StyledList = styled.div`
 const ColorGroupName = styled.h2`
   text-transform: capitalize;
   margin-bottom: 0.75rem;
+  font-size: 1.17em;
 `;
 
 const ColorTable = styled.table`
