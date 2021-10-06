@@ -2,7 +2,6 @@ import React from "react";
 import colors from "../data.json";
 import styled from "styled-components";
 import ColorValue from "./ColorValue";
-import { toast } from "react-toastify";
 
 const StyledList = styled.div`
   margin: 0 auto 4rem;
@@ -185,19 +184,6 @@ const ColorHSL = styled.td`
 const ColorList = ({ id, colorGroup }) => {
   const list = colors.filter((color) => color.group === colorGroup);
 
-  const notify = (color) => {
-    toast(`Copied ${color}! 👍`, {
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 4000,
-      draggable: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      progress: undefined,
-      hideProgressBar: true,
-    });
-  };
-
   return (
     <StyledList id={id} className="colorGroup">
       <ColorGroupName>{colorGroup} - CSS Named Colors</ColorGroupName>
@@ -218,24 +204,16 @@ const ColorList = ({ id, colorGroup }) => {
                 <ColorBlock color={color.name} />
               </ColorPreview>
               <ColorName>
-                <div onClick={() => notify(color.name)}>
-                  <ColorValue color={color.name} small={true} />
-                </div>
+                <ColorValue color={color.name} small={true} />
               </ColorName>
               <ColorHex>
-                <div onClick={() => notify(color.hex)}>
-                  <ColorValue color={color.hex} small={true} />
-                </div>
+                <ColorValue color={color.hex} small={true} />
               </ColorHex>
               <ColorRGB>
-                <div onClick={() => notify(`rgb(${color.rgb})`)}>
-                  <ColorValue color={`rgb(${color.rgb})`} small={true} />
-                </div>
+                <ColorValue color={`rgb(${color.rgb})`} small={true} />
               </ColorRGB>
               <ColorHSL>
-                <div onClick={() => notify(`hsl(${color.hsl})`)}>
-                  <ColorValue color={`hsl(${color.hsl})`} small={true} />
-                </div>
+                <ColorValue color={`hsl(${color.hsl})`} small={true} />
               </ColorHSL>
             </TableRow>
           ))}

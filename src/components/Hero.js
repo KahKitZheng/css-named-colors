@@ -62,18 +62,6 @@ const Bullet = styled.span`
 const Hero = () => {
   const [idx, setIndex] = useState(null);
 
-  const notify = (color) =>
-    toast(`Copied ${color}! 👍`, {
-      theme: "dark",
-      position: "bottom-right",
-      autoClose: 3000,
-      draggable: false,
-      closeOnClick: true,
-      pauseOnHover: false,
-      progress: undefined,
-      hideProgressBar: true,
-    });
-
   function randomIndex(min, max) {
     let idx = Math.floor(Math.random() * (max - min) + min);
     return setIndex(idx);
@@ -91,17 +79,11 @@ const Hero = () => {
       >
         <ColorName>{data[idx].name}</ColorName>
         <ColorValues>
-          <div onClick={() => notify(data[idx].hex)}>
-            <ColorValue color={data[idx].hex} />
-          </div>
+          <ColorValue color={data[idx].hex} />
           <Bullet>&#8226;</Bullet>
-          <div onClick={() => notify(`rgb(${data[idx].rgb})`)}>
-            <ColorValue color={`rgb(${data[idx].rgb})`} />
-          </div>
+          <ColorValue color={`rgb(${data[idx].rgb})`} />
           <Bullet>&#8226;</Bullet>
-          <div onClick={() => notify(`hsl(${data[idx].hsl})`)}>
-            <ColorValue color={`hsl(${data[idx].hsl})`} />
-          </div>
+          <ColorValue color={`hsl(${data[idx].hsl})`} />
         </ColorValues>
 
         <ToastContainer />

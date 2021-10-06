@@ -1,5 +1,6 @@
 import React from "react";
 import styled from "styled-components";
+import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
 const Button = styled.button`
@@ -20,10 +21,27 @@ const Button = styled.button`
   }
 `;
 
-const ColorValue = ({ color, small }) => (
-  <CopyToClipboard text={color}>
-    <Button isSmall={small}>{color}</Button>
-  </CopyToClipboard>
-);
+const ColorValue = ({ color, small }) => {
+  const notify = (color) => {
+    toast(`Copied ${color}! 👍`, {
+      theme: "dark",
+      position: "bottom-right",
+      autoClose: 4000,
+      draggable: false,
+      closeOnClick: true,
+      pauseOnHover: false,
+      progress: undefined,
+      hideProgressBar: true,
+    });
+  };
+
+  return (
+    <CopyToClipboard text={color}>
+      <Button onClick={() => notify(color)} isSmall={small}>
+        {color}
+      </Button>
+    </CopyToClipboard>
+  );
+};
 
 export default ColorValue;
