@@ -38,7 +38,7 @@ const Colors = ({ toggleTheme }) => {
 
     checkViewport();
     window.addEventListener("resize", checkViewport);
-  });
+  }, []);
 
   return (
     <Container>
