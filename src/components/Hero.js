@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import styled from "styled-components";
 import data from "../data.json";
 import ColorValue from "./ColorValue";
@@ -58,28 +58,21 @@ const Bullet = styled.span`
 `;
 
 const Hero = () => {
-  const [idx, setIndex] = useState(0);
-
-  useEffect(() => {
-    let idx = Math.floor(Math.random() * data.length);
-    setIndex(idx);
-  }, []);
+  let idx = Math.floor(Math.random() * data.length);
+  const { name, hex, rgb, hsl } = data[idx];
 
   return (
-    <StyledHero
-      bgColor={data[idx].hex}
-      textColor={calcTextColor(data[idx].rgb)}
-    >
-      <ColorName>{data[idx].name}</ColorName>
+    <StyledHero bgColor={hex} textColor={calcTextColor(rgb)}>
+      <ColorName>{name}</ColorName>
       <ColorValues>
-        <ColorValue color={data[idx].hex} />
+        <ColorValue color={hex} />
         <Bullet>&#8226;</Bullet>
-        <ColorValue color={`rgb(${data[idx].rgb})`} />
+        <ColorValue color={`rgb(${rgb})`} />
         <Bullet>&#8226;</Bullet>
-        <ColorValue color={`hsl(${data[idx].hsl})`} />
+        <ColorValue color={`hsl(${hsl})`} />
       </ColorValues>
 
-      <ScrollDown color={data[idx].rgb} />
+      <ScrollDown color={rgb} />
     </StyledHero>
   );
 };
