@@ -4,7 +4,7 @@ import data from "../data.json";
 import ColorValue from "./ColorValue";
 import ScrollDown from "./ScrollDown";
 import { calcTextColor } from "../utils";
-import { ToastContainer, toast } from "react-toastify";
+import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
 const StyledHero = styled.div`
