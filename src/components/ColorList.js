@@ -32,7 +32,7 @@ const StyledList = styled.div`
   }
 `;
 
-const ColorGroupName = styled.h3`
+const ColorGroupName = styled.h2`
   text-transform: capitalize;
   margin-bottom: 0.75rem;
 `;
