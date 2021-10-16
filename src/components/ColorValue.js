@@ -55,6 +55,7 @@ const ColorValue = ({ color, small, type }) => {
       {type === "block" ? (
         <ColorBlock
           color={color}
+          aria-label={color}
           onClick={(e) => {
             e.stopPropagation();
             notify(color);
