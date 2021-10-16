@@ -62,19 +62,6 @@ const Bullet = styled.span`
   }
 `;
 
-const Wrapper = styled.div`
-  position: absolute;
-  top: 0;
-  left: 0;
-  z-index: 5;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-`;
-
 const Hero = () => {
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
   const [randomIndex, setRandomIndex] = useState(random(1, colors.length));
@@ -86,16 +73,14 @@ const Hero = () => {
         textColor={calcTextColor(colors[randomIndex].rgb)}
         onClick={() => setRandomIndex(random(1, colors.length))}
       >
-        <Wrapper>
-          <ColorName>{colors[randomIndex].name}</ColorName>
-          <ColorValues>
-            <ColorValue color={colors[randomIndex].hex} />
-            <Bullet>&#8226;</Bullet>
-            <ColorValue color={`rgb(${colors[randomIndex].rgb})`} />
-            <Bullet>&#8226;</Bullet>
-            <ColorValue color={`hsl(${colors[randomIndex].hsl})`} />
-          </ColorValues>
-        </Wrapper>
+        <ColorName>{colors[randomIndex].name}</ColorName>
+        <ColorValues>
+          <ColorValue color={colors[randomIndex].hex} />
+          <Bullet>&#8226;</Bullet>
+          <ColorValue color={`rgb(${colors[randomIndex].rgb})`} />
+          <Bullet>&#8226;</Bullet>
+          <ColorValue color={`hsl(${colors[randomIndex].hsl})`} />
+        </ColorValues>
 
         <ScrollDown color={colors[randomIndex].rgb} />
       </StyledHero>
