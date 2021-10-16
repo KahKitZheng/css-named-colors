@@ -1,5 +1,5 @@
 import React from "react";
-import colors from "../data.json";
+import colors from "../colors.json";
 import styled from "styled-components";
 import ColorValue from "./ColorValue";
 

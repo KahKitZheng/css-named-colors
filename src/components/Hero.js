@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-import data from "../data.json";
+import colors from "../colors.json";
 import ColorValue from "./ColorValue";
 import ScrollDown from "./ScrollDown";
 import { calcTextColor } from "../utils";
