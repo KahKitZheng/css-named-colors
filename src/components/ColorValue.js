@@ -23,7 +23,7 @@ const Button = styled.button`
 
 const ColorValue = ({ color, small }) => {
   const notify = (color) => {
-    toast(`Copied ${color}! 👍`, {
+    toast(`Copied ${color.toLowerCase()}! 👍`, {
       theme: "dark",
       position: "bottom-right",
       autoClose: 4000,
