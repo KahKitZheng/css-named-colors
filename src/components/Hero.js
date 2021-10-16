@@ -76,12 +76,8 @@ const Wrapper = styled.div`
 `;
 
 const Hero = () => {
-  const [randomIndex, setRandomIndex] = useState(null);
   const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
-
-  useEffect(() => {
-    setRandomIndex(random(1, colors.length));
-  }, []);
+  const [randomIndex, setRandomIndex] = useState(random(1, colors.length));
 
   return (
     randomIndex && (
@@ -89,8 +85,7 @@ const Hero = () => {
         bgColor={colors[randomIndex].hex}
         textColor={calcTextColor(colors[randomIndex].rgb)}
         onClick={() => {
-          let number = random(1, colors.length);
-          setRandomIndex(number);
+          setRandomIndex(random(1, colors.length));
         }}
       >
         <Wrapper>
