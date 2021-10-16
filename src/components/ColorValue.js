@@ -3,6 +3,21 @@ import styled from "styled-components";
 import { toast } from "react-toastify";
 import { CopyToClipboard } from "react-copy-to-clipboard";
 
+const ColorBlock = styled.button`
+  height: 1.75rem;
+  width: 3.5rem;
+  background-color: ${(props) => props.color};
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    height: 1.25rem;
+    width: 2.5rem;
+  }
+`;
+
 const Button = styled.button`
   background-color: transparent;
   border: 0;
@@ -21,7 +36,7 @@ const Button = styled.button`
   }
 `;
 
-const ColorValue = ({ color, small }) => {
+const ColorValue = ({ color, small, type }) => {
   const notify = (color) => {
     toast(`Copied ${color.toLowerCase()}! 👍`, {
       theme: "dark",
@@ -37,9 +52,13 @@ const ColorValue = ({ color, small }) => {
 
   return (
     <CopyToClipboard text={color}>
-      <Button onClick={() => notify(color)} isSmall={small}>
-        {color}
-      </Button>
+      {type === "block" ? (
+        <ColorBlock onClick={() => notify(color)} color={color} />
+      ) : (
+        <Button onClick={() => notify(color)} isSmall={small}>
+          {color}
+        </Button>
+      )}
     </CopyToClipboard>
   );
 };

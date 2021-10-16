@@ -114,19 +114,6 @@ const TableHeader = styled.th`
   height: 2rem;
 `;
 
-const ColorBlock = styled.div`
-  height: 1.75rem;
-  width: 3.5rem;
-  background-color: ${(props) => props.color};
-  border-radius: 4px;
-  box-shadow: 0 0 1px 1px rgba(0, 0, 0, 0.2);
-
-  @media (max-width: 768px) {
-    height: 1.25rem;
-    width: 2.5rem;
-  }
-`;
-
 const ColorPreview = styled.td`
   min-width: 1rem;
   padding: 0 0.5rem 0 1rem;
@@ -202,7 +189,7 @@ const ColorList = ({ id, colorGroup }) => {
           {list.map((color) => (
             <TableRow key={color.name}>
               <ColorPreview>
-                <ColorBlock color={color.name} />
+                <ColorValue color={color.name} small={true} type="block" />
               </ColorPreview>
               <ColorName>
                 <ColorValue color={color.name} small={true} />
