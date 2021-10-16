@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styled from "styled-components";
 import colors from "../colors.json";
 import ColorValue from "./ColorValue";
@@ -12,6 +12,7 @@ const StyledHero = styled.div`
   flex-direction: column;
   height: 100vh;
   width: 100%;
+  cursor: pointer;
 
   background-color: ${(props) => props.bgColor};
   color: ${(props) => props.textColor};
@@ -33,6 +34,10 @@ const ColorValues = styled.div`
   justify-content: center;
   flex-direction: column;
   margin-top: 2rem;
+
+  button:hover {
+    opacity: 0.5;
+  }
 
   @media (min-width: 768px) {
     flex-direction: row;
@@ -57,23 +62,51 @@ const Bullet = styled.span`
   }
 `;
 
+const Wrapper = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 5;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  height: 100%;
+  width: 100%;
+`;
+
 const Hero = () => {
-  let idx = Math.floor(Math.random() * data.length);
-  const { name, hex, rgb, hsl } = data[idx];
+  const [randomIndex, setRandomIndex] = useState(null);
+  const random = (min, max) => Math.floor(Math.random() * (max - min)) + min;
+
+  useEffect(() => {
+    setRandomIndex(random(1, colors.length));
+  }, []);
 
   return (
-    <StyledHero bgColor={hex} textColor={calcTextColor(rgb)}>
-      <ColorName>{name}</ColorName>
-      <ColorValues>
-        <ColorValue color={hex} />
-        <Bullet>&#8226;</Bullet>
-        <ColorValue color={`rgb(${rgb})`} />
-        <Bullet>&#8226;</Bullet>
-        <ColorValue color={`hsl(${hsl})`} />
-      </ColorValues>
+    randomIndex && (
+      <StyledHero
+        bgColor={colors[randomIndex].hex}
+        textColor={calcTextColor(colors[randomIndex].rgb)}
+        onClick={() => {
+          let number = random(1, colors.length);
+          setRandomIndex(number);
+        }}
+      >
+        <Wrapper>
+          <ColorName>{colors[randomIndex].name}</ColorName>
+          <ColorValues>
+            <ColorValue color={colors[randomIndex].hex} />
+            <Bullet>&#8226;</Bullet>
+            <ColorValue color={`rgb(${colors[randomIndex].rgb})`} />
+            <Bullet>&#8226;</Bullet>
+            <ColorValue color={`hsl(${colors[randomIndex].hsl})`} />
+          </ColorValues>
+        </Wrapper>
 
-      <ScrollDown color={rgb} />
-    </StyledHero>
+        <ScrollDown color={colors[randomIndex].rgb} />
+      </StyledHero>
+    )
   );
 };
 

@@ -28,7 +28,7 @@ const Button = styled.button`
   padding: 0;
 
   &:active {
-    transform: scale(1.1);
+    transform: scale(1.07);
   }
 
   @media (min-width: 768px) {
@@ -53,9 +53,22 @@ const ColorValue = ({ color, small, type }) => {
   return (
     <CopyToClipboard text={color}>
       {type === "block" ? (
-        <ColorBlock onClick={() => notify(color)} color={color} />
+        <ColorBlock
+          color={color}
+          onClick={(e) => {
+            e.stopPropagation();
+            notify(color);
+          }}
+        />
       ) : (
-        <Button onClick={() => notify(color)} isSmall={small}>
+        <Button
+          isSmall={small}
+          color={color}
+          onClick={(e) => {
+            e.stopPropagation();
+            notify(color);
+          }}
+        >
           {color}
         </Button>
       )}
