@@ -84,9 +84,7 @@ const Hero = () => {
       <StyledHero
         bgColor={colors[randomIndex].hex}
         textColor={calcTextColor(colors[randomIndex].rgb)}
-        onClick={() => {
-          setRandomIndex(random(1, colors.length));
-        }}
+        onClick={() => setRandomIndex(random(1, colors.length))}
       >
         <Wrapper>
           <ColorName>{colors[randomIndex].name}</ColorName>
