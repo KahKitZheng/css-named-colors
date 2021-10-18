@@ -51,7 +51,7 @@ const ColorValue = ({ color, small, type }) => {
   };
 
   return (
-    <CopyToClipboard text={color}>
+    <CopyToClipboard text={color.toLowerCase()}>
       {type === "block" ? (
         <ColorBlock
           color={color}
